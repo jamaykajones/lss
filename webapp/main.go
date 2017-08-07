@@ -3,44 +3,23 @@ package main
 import (
 	"html/template"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
 
-	"github.com/jamayka.jones/lss/webapp/viewmodel"
+	"github.com/jamaykajones/lss/webapp/controller"
 )
 
 func main() {
 	templates := populateTemplates()
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		requestedFile := r.URL.Path[1:]
-		template := templates[requestedFile+".html"]
-		var context interface{} //empty interface
-		switch requestedFile {
-		case "shop":
-			context = viewmodel.NewShop()
-		default:
-			context = viewmodel.NewHome()
-		}
-		if template != nil {
-			err := template.Execute(w, context)
-			if err != nil {
-				log.Println(err)
-			}
-		} else {
-			w.WriteHeader(404) //statusNotFound
-		}
-	})
-	http.Handle("/img/", http.FileServer(http.Dir("public")))
-	http.Handle("/css/", http.FileServer(http.Dir("public")))
+	controller.Startup(templates)
 	http.ListenAndServe(":8000", nil)
 }
 
 func populateTemplates() map[string]*template.Template { //maps of strings to templates
 	result := make(map[string]*template.Template)
 	const basePath = "templates"
-	layout := template.Must(template.ParseFiles(basePath + "/_layout.html"))             // loading in the template
-	template.Must(layout.ParseFiles(basePath+"/_header.html", basePath+"/_footer.html")) //loding subtemps the layout will use
+	layout := template.Must(template.ParseFiles(basePath + "/_layout.html"))             //loading in the template
+	template.Must(layout.ParseFiles(basePath+"/_header.html", basePath+"/_footer.html")) //loading subtemps the layout will use
 	dir, err := os.Open(basePath + "/content")                                           //load in conetent DIR
 	if err != nil {
 		panic("Failed to open template block directory: " + err.Error())
