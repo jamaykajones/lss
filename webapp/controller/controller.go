@@ -17,6 +17,6 @@ func Startup(templates map[string]*template.Template) { //startup function
 	shopController.categoryTemplate = templates["shop_details.html"]
 	homeController.registerRoutes()
 	shopController.registerRoutes()
-	http.Handle("/img/", http.FileServer(http.Dir("public"))) //static resources from main.go \/
+	http.Handle("/img/", http.FileServer(http.Dir("public"))) //static resources from main.go
 	http.Handle("/css/", http.FileServer(http.Dir("public")))
 }
