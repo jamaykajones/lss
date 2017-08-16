@@ -14,6 +14,7 @@ var (
 func Startup(templates map[string]*template.Template) { //startup function
 	homeController.homeTemplate = templates["home.html"]
 	shopController.shopTemplate = templates["shop.html"]
+	shopController.categoryTemplate = templates["shop_details.html"]
 	homeController.registerRoutes()
 	shopController.registerRoutes()
 	http.Handle("/img/", http.FileServer(http.Dir("public"))) //static resources from main.go \/
