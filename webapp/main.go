@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/jamayka.jones/lss/webapp/viewmodel"
+	"github.com/jamaykajones/lss/webapp/viewmodel"
 )
 
 func main() {
