@@ -17,9 +17,9 @@ func main() {
 
 func populateTemplates() map[string]*template.Template { //maps of strings to templates
 	result := make(map[string]*template.Template)
-	const basePath = "D:/Users/jjones/Go/src/github.com/jamaykajones/lss/webapp/templates"
-	layout := template.Must(template.ParseFiles(basePath + "/_layout.html"))             //loading in the template
-	template.Must(layout.ParseFiles(basePath+"/_header.html", basePath+"/_footer.html")) //loading subtemps the layout will use
+	const basePath = "D:/Users/jjones/Go/src/github.com/jamaykajones/lss/templates"
+	layout := template.Must(template.ParseFiles(basePath + "/_layout.html"))             // loading in the template
+	template.Must(layout.ParseFiles(basePath+"/_header.html", basePath+"/_footer.html")) //loding subtemps the layout will use
 	dir, err := os.Open(basePath + "/content")                                           //load in conetent DIR
 	if err != nil {
 		panic("Failed to open template block directory: " + err.Error())

@@ -39,7 +39,11 @@ var categories []Category = []Category{
 	},
 }
 
+<<<<<<< HEAD
+func GetCategories() []Category { //returning a static slice of categoories
+=======
 func GetCategories() []Category {
+>>>>>>> master
 	return categories
 }
 
@@ -51,5 +55,8 @@ func GetCategory(ID int) (*Category, error) {
 	}
 	return nil, errors.New(fmt.Sprintf("Category with ID %v not found", ID))
 }
+<<<<<<< HEAD
+=======
 
 //result.Categories = []Category{juiceCategory, supplyCategory, advertiseCategory} // combine together in slice
+>>>>>>> master
