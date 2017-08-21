@@ -115,7 +115,7 @@ var products []Product = []Product{Product{
 	CategoryID:       1,
 }, Product{
 	Name:             "Strawberry Juice",
-	DescriptionShort: "MThe perfect balance of sweet and tart.",
+	DescriptionShort: "The perfect balance of sweet and tart.",
 	DescriptionLong:  "The perfect balance of sweet and tart.",
 	PricePerLiter:    4.36,
 	PricePer10Liter:  4.27,

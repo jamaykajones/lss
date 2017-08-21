@@ -23,7 +23,7 @@ func (sl standLocator) handleStandLocator(w http.ResponseWriter, r *http.Request
 	vm := viewmodel.NewStandLocator()
 	sl.standLocatorTemplate.Execute(w, vm)
 }
-func (sl standLocator) handleApiStands(w http.ResponseWriter, r *http.Request) {
+func (sl standLocator) handleApiStands(w http.ResponseWriter, r *http.Request) { //req handler
 	dec := json.NewDecoder(r.Body) //decoder for zip
 	var loc struct {
 		ZipCode string `json:"zipCode"` //struct to capture zip field

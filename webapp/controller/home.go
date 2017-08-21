@@ -10,26 +10,19 @@ import (
 )
 
 type home struct {
-	homeTemplate         *template.Template //hold config data from home page template
-	standLocatorTemplate *template.Template
-	loginTemplate        *template.Template
+	homeTemplate  *template.Template //hold config data from home page template
+	loginTemplate *template.Template
 }
 
 func (h home) registerRoutes() {
 	http.HandleFunc("/home", h.handleHome) //Startup func creates routehandlers then call this method
 	http.HandleFunc("/", h.handleHome)
-	http.HandleFunc("/stand-locator", h.handleStandLocator)
 	http.HandleFunc("/login", h.handleLogin)
 }
 
 func (h home) handleHome(w http.ResponseWriter, r *http.Request) { //responsibility of processing request
 	vm := viewmodel.NewHome()
 	h.homeTemplate.Execute(w, vm)
-}
-
-func (h home) handleStandLocator(w http.ResponseWriter, r *http.Request) { //responsibility of processing request
-	vm := viewmodel.NewStandLocator()
-	h.standLocatorTemplate.Execute(w, vm)
 }
 
 func (h home) handleLogin(w http.ResponseWriter, r *http.Request) {
