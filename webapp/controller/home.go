@@ -22,6 +22,7 @@ func (h home) registerRoutes() {
 
 func (h home) handleHome(w http.ResponseWriter, r *http.Request) { //responsibility of processing request
 	vm := viewmodel.NewHome()
+	w.Header().Add("Content-Type", "text/html")
 	h.homeTemplate.Execute(w, vm)
 }
 
@@ -42,5 +43,6 @@ func (h home) handleLogin(w http.ResponseWriter, r *http.Request) {
 			vm.Password = password
 		}
 	}
+	w.Header().Add("Content-Type", "text/html")
 	h.loginTemplate.Execute(w, vm)
 }
